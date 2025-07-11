@@ -1,0 +1,162 @@
+,CODE,NAME
+788,BM12_PIB12,PIB
+789,BM12_PIBAC12,PIB - acumulado em 12 meses
+790,GAC_PIBCAP,PIB per capita (preços 2023)
+791,GAC_PIBCAPN,PIB per capita
+792,GAC_PIBCAPR,PIB per capita (preços 2023)
+793,GAC_PIBCAPUSN,PIB per capita
+858,HIST_PIBR,PIB - INATIVA
+859,HIST_VAAGR,PIB - agricultura - índice (média 1939 = 100) - INATIVA
+860,SCN10_AADMY10,"PIB - serviços - administração, saúde e educação públicas e seguridade social - preços correntes"
+861,SCN10_CFG10,PIB - consumo final - governo - índice real (base 2010 = 100)
+862,SCN10_CFGG10,PIB - consumo final - governo - variação real anual
+863,SCN10_CFGGN10,PIB - consumo final - governo
+864,SCN10_CFISFLSFN10,PIB - consumo final - ISFLSF
+865,SCN10_CFPPNEX10,PIB - consumo final - famílias - exclusive ISFLSF - índice real (base 2010 = 100)
+866,SCN10_CFPPNEXC10,PIB - consumo final - famílias - exclusive ISFLSF
+867,SCN10_CFPPNEXCG10,PIB - consumo final - famílias - exclusive ISFLSF - variação real anual
+868,SCN10_CTN10,PIB - consumo final
+869,SCN10_CTNG10,PIB - consumo final - variação real anual
+870,SCN10_CTNP10,PIB - consumo final (preços 2010)
+871,SCN10_DAN10,PIB - demanda total
+872,SCN10_DIPIBG10,PIB - preços de mercado - deflator implícito - variação anual
+873,SCN10_FBKF10,PIB - formação bruta de capital fixo - índice real (base 2010 = 100)
+874,SCN10_FBKFCG10,PIB - formação bruta de capital fixo - construção - variação real anual
+875,SCN10_FBKFCN10,PIB - formação bruta de capital fixo - construção
+876,SCN10_FBKFG10,PIB - formação bruta de capital fixo - variação real anual
+877,SCN10_FBKFM10,PIB - formação bruta de capital fixo - máquinas e equipamentos -  índice real (base 2010 = 100)
+878,SCN10_FBKFMN10,PIB - formação bruta de capital fixo - máquinas e equipamentos
+879,SCN10_FBKFMP10,PIB - formação bruta de capital fixo - máquinas e equipamentos  (preços 2010)
+880,SCN10_FBKFN10,PIB - formação bruta de capital fixo
+881,SCN10_FBKFOG10,PIB - formação bruta de capital fixo - outros -  variação real anual
+882,SCN10_FBKFON10,PIB - formação bruta de capital fixo - outros
+883,SCN10_FBKFP10,PIB - formação bruta de capital fixo (preços 2010)
+884,SCN10_FBKFPIBV10,PIB - taxa de investimento - preços correntes
+885,SCN10_FBKG10,PIB - formação bruta de capital - variação real anual
+886,SCN10_FBKN10,PIB - formação bruta de capital
+887,SCN10_FBKP10,PIB - formação bruta de capital (preços 2010)
+888,SCN10_IPBN10,PIB - impostos sobre produtos
+889,SCN10_MBSZG10,PIB - importações - bens e serviços - variação real anual
+890,SCN10_MBSZN10,PIB - importações - bens e serviços
+891,SCN10_PIB10,PIB - preços de mercado - índice real (base 2010 = 100)
+892,SCN10_PIBG10,PIB - preços de mercado - variação real anual
+893,SCN10_PIBN10,PIB - preços de mercado
+894,SCN10_PIBP10,PIB - preços de mercado (preços 2010)
+895,SCN10_PIBPB10,PIB - preços básicos - índice real (base 2010 = 100)
+896,SCN10_PIBPBG10,PIB - preços básicos - variação real anual
+897,SCN10_PIBPBN10,PIB - preços básicos
+898,SCN10_PIBPBP10,PIB - preços básicos (preços 2010)
+899,SCN10_RLON10,PIB - excedente operacional bruto e rendimento misto bruto
+900,SCN10_RWN10,PIB - remuneração dos empregados - salários
+901,SCN10_RWTN10,PIB - remuneração dos empregados
+902,SCN10_VAADMN10,"PIB - serviços - administração, saúde e educação públicas e seguridade social"
+903,SCN10_VAAGRO10,PIB - agropecuária - índice real (base 2010 = 100)
+904,SCN10_VAAGROG10,PIB - agropecuária - variação real anual
+905,SCN10_VAAGRON10,PIB - agropecuária
+906,SCN10_VAAGROP10,PIB - agropecuária (preços 2010)
+907,SCN10_VAAGROY10,PIB - agropecuária - preços correntes
+908,SCN10_VACOG10,PIB - indústria - construção civil - variação real anual
+909,SCN10_VACOMN10,PIB - serviços - comércio
+910,SCN10_VACOMY10,PIB - serviços - comércio - preços correntes
+911,SCN10_VACON10,PIB - indústria - construção civil
+912,SCN10_VACOP10,PIB - indústria - construção civil (preços 2010)
+913,SCN10_VACOY10,PIB - indústria - construção civil - preços correntes
+914,SCN10_VAEMG10,PIB - indústria - extrativa - variação real anual
+915,SCN10_VAEMN10,PIB - indústria - extrativa
+916,SCN10_VAEMY10,PIB - indústria - extrativa - preços correntes
+917,SCN10_VAIND10,PIB - indústria - índice real (base 2010 = 100)
+918,SCN10_VAINDG10,PIB - indústria - variação real anual
+919,SCN10_VAINDN10,PIB - indústria
+920,SCN10_VAINDP10,PIB - indústria (preços 2010)
+921,SCN10_VAINDY10,PIB - indústria - preços correntes
+922,SCN10_VAIT10,PIB - indústria - transformação - índice real (base 2010 = 100)
+923,SCN10_VAITG10,PIB - indústria - transformação - variação real anual
+924,SCN10_VAITN10,PIB - indústria - transformação
+925,SCN10_VAITP10,PIB - indústria - transformação (preços 2010)
+926,SCN10_VAITY10,PIB - indústria - transformação - preços correntes
+927,SCN10_VASERVG10,PIB - serviços - variação real anual
+928,SCN10_VASERVN10,PIB - serviços
+929,SCN10_VASERVP10,PIB - serviços (preços 2010)
+930,SCN10_VASERVY10,PIB - serviços - preços correntes
+931,SCN10_VATRAN10,"PIB - serviços - transporte, armazenagem e correio"
+932,SCN10_VBPN10,PIB - produção
+933,SCN10_VESTOG10,PIB - formação bruta de capital - variação de estoque - variação real anual
+934,SCN10_VESTON10,PIB - formação bruta de capital - variação de estoque
+935,SCN10_XBSZG10,PIB - exportações - bens e serviços - variação real anual
+936,SCN10_XBSZN10,PIB - exportações - bens e serviços
+937,SCN104_CFGGN104,PIB - consumo final - APU
+938,SCN104_CFPPI104,PIB - consumo final - famílias - índice real encadeado (média 1995 = 100)
+939,SCN104_CFPPN104,PIB - consumo final - famílias
+940,SCN104_FBKFG104,PIB - formação bruta de capital fixo - variação real trimestral sobre mesmo trimestre do ano anterior
+941,SCN104_FBKFI104,PIB - formação bruta de capital fixo - índice real encadeado (média 1995 = 100)
+942,SCN104_FBKFN104,PIB - formação bruta de capital fixo
+943,SCN104_MBSZN104,PIB - importações - bens e serviços
+944,SCN104_PIB104,PIB - preços básicos - índice real encadeado (média 1995 = 100)
+945,SCN104_PIBAGPAS104,PIB - agropecuária - índice real encadeado dessazonalizado (média 1995 = 100)
+946,SCN104_PIBAGPG104,PIB - agropecuária   - variação real trimestral sobre mesmo trimestre do ano anterior
+947,SCN104_PIBAGPV104,PIB - agropecuária
+948,SCN104_PIBAGR104,PIB - agropecuária - índice real encadeado (média 1995 = 100)
+949,SCN104_PIBAS104,PIB - preços básicos - índice real encadeado dessazonalizado (média 1995 = 100)
+950,SCN104_PIBCPPAS104,PIB - consumo final - famílias - índice real encadeado dessazonalizado (média 1995 = 100)
+951,SCN104_PIBFBKFAS104,PIB - formação bruta de capital fixo - índice real encadeado dessazonalizado (média 1995 = 100)
+952,SCN104_PIBICCAS104,PIB - indústria - construção civil -  índice real encadeado dessazonalizado (média 1995 = 100)
+953,SCN104_PIBICCV104,PIB - indústria - construção civil
+954,SCN104_PIBINDV104,PIB - indústria
+955,SCN104_PIBITRV104,PIB - indústria - transformação
+956,SCN104_PIBIVAV104,PIB - impostos sobre produtos
+957,SCN104_PIBMBSZAS104,PIB - importações - bens e serviços - índice real encadeado dessazonalizado (média 1995 = 100)
+958,SCN104_PIBPBG104,PIB - preços básicos - variação real trimestral sobre mesmo trimestre do ano anterior
+959,SCN104_PIBPBN104,PIB - preços básicos
+960,SCN104_PIBPM104,PIB - preços de mercado - índice real encadeado (média 1995 = 100)
+961,SCN104_PIBPMAS104,PIB - preços de mercado - índice real encadeado dessazonalizado (média 1995 = 100)
+962,SCN104_PIBPMBM104,PIB - preços de mercado - índice real base móvel (média do ano anterior = 100)
+963,SCN104_PIBPMG104,PIB - preços de mercado - variação real trimestral sobre mesmo trimestre do ano anterior
+964,SCN104_PIBPMV104,PIB - preços de mercado
+965,SCN104_PIBSCOV104,PIB - serviços - comércio
+966,SCN104_PIBSERV104,PIB - serviços
+967,SCN104_PIBXBSZAS104,PIB - exportações - bens e serviços - índice real encadeado dessazonalizado (média 1995 = 100)
+968,SCN104_PNBN104,PIB - renda nacional bruta
+969,SCN104_RNDBN104,PIB - renda nacional disponível bruta
+970,SCN104_SBN104,PIB - poupança bruta
+971,SCN104_VESTON104,PIB - formação bruta de capital - variação de estoque
+972,SCN104_XBSZN104,PIB - exportações - bens e serviços
+973,SGS12_PIBCAPBR,PIB per capita em R$ correntes (SGS-BCB)
+974,SGS12_PIBCAPUS,PIB per capita em US$ correntes (SGS-BCB)
+1163,ECONMI4_USPIBG34,PIB - variação real trimestral  anualizada
+1164,ECONMI4_USPIBG4,PIB - variação real contra igual trimestre do ano anterior
+1181,WDI_PIBPPCBRA,Brasil - PIB - paridade do poder de compra (PPC)
+1182,WDI_PIBPPCCAPBRA,Brasil - PIB - paridade do poder de compra (PPC) - per capita
+1183,WDI_PIBPPCCAPRBRA,Brasil - PIB - paridade do poder de compra (PPC) - per capita
+1184,WDI_PIBPPCRBRA,Brasil - PIB - paridade do poder de compra (PPC)
+1193,WEO_PIBRWEOBRA,Brasil - PIB - variação real
+1194,WEO_PIBWEOBRA,Brasil - PIB
+1361,PAN_PIBCAP,PIB per capita
+1383,PAN4_PIBPMG4,PIB real
+1384,PAN4_PIBPMV4,PIB nominal
+1717,IMPPIB,"PIB Municipal - impostos, líquidos de subsídios, sobre produtos (preços de 2010)"
+1718,PIB,PIB Municipal - preços de mercado (preços de 2010) - Série Histórica - INATIVA
+1719,PIB_IBGE_5938_37,PIB Municipal - preços de mercado (preços de 2010)
+1720,PIBAAE,PIB Estadual (valor adicionado a preços básicos) - serviços - alojamento e alimentação (preços de 2010) - INATIVA
+1721,PIBAG,PIB Municipal (valor adicionado a preços básicos) - agropecuária (preços de 2010)
+1722,PIBAGE,PIB Estadual (valor adicionado a preços básicos) - agropecuária (preços de 2010)
+1723,PIBALE,PIB Estadual (valor adicionado a preços básicos) - serviços - atividades imobiliárias (preços de 2010)
+1724,PIBCME,PIB Estadual (valor adicionado a preços básicos) - serviços - informação e comunicação (preços de 2010)
+1725,PIBCNE,PIB Estadual (valor adicionado a preços básicos) - indústria - construção civil (preços de 2010)
+1726,PIBCOE,PIB Estadual (valor adicionado a preços básicos) - serviços - comércio e reparação de veículos automotores e motocicletas (preços de 2010)
+1727,PIBE,PIB Estadual - preços de mercado (preços de 2010)
+1728,PIBEGAE,"PIB Estadual (valor adicionado a preços básicos) - indústria - serviços de eletricidade e gás, água, esgoto e limpeza urbana (preços de 2010)"
+1729,PIBFE,"PIB Estadual (valor adicionado a preços básicos) - serviços - atividades financeiras, de seguros e serviços relacionados (preços de 2010)"
+1730,PIBG,"PIB Municipal (valor adicionado a preços básicos) - serviços - administração, defesa, educação e saúde públicas e seguridade social (preços de 2010)"
+1731,PIBGE,"PIB Estadual (valor adicionado a preços básicos) - serviços - administração, defesa, saúde e educação públicas e seguridade social (preços de 2010)"
+1732,PIBI,PIB Municipal (valor adicionado a preços básicos) - indústria (preços de 2010)
+1733,PIBIE,PIB Estadual (valor adicionado a preços básicos) - indústria (preços de 2010)
+1734,PIBIEE,PIB Estadual (valor adicionado a preços básicos) - indústria - extrativa (preços de 2010)
+1735,PIBITE,PIB Estadual (valor adicionado a preços básicos) - indústria - transformação (preços de 2010)
+1736,PIBPCE,PIB Estadual per capita - preços de mercado (preços de 2010)
+1737,PIBPMCE,PIB Estadual - preços de mercado
+1738,PIBSAE,PIB Estadual (valor adicionado a preços básicos) - serviços - educação e saúde privadas (preços de 2010) - INATIVA
+1739,PIBSCE,"PIB Estadual (valor adicionado a preços básicos) - serviços - atividades profissionais, científicas e técnicas, administrativas e serv. compl. (preços de 2010) - INATIVA"
+1740,PIBSE,"PIB Municipal (valor adicionado a preços básicos) - serviços, exclusive administração, defesa, educação e saúde públicas e seguridade social (preços de 2010)"
+1741,PIBSEE,PIB Estadual (valor adicionado a preços básicos) - serviços (preços de 2010)
+1742,PIBTAE,"PIB Estadual (valor adicionado a preços básicos) - serviços - transportes, armazenagem e correio (preços de 2010)"
+1743,PIBVRAE,PIB Estadual - preços de mercado -  variação anual

@@ -12,7 +12,7 @@ BEGIN
 		CODEPAGE = '65001',
 		TABLOCK
 	);
-
+	
 	-- Inserindo dados na taxa de cambio
 	TRUNCATE TABLE bronze.taxa_cambio -- Remove todas as linhas da tabela antes de adicionar as linhas
 	BULK INSERT bronze.taxa_cambio
@@ -24,6 +24,7 @@ BEGIN
 		CODEPAGE = '65001',
 		TABLOCK
 	);
+	
 
 	-- Inserindo dados na tabela PIB
 	TRUNCATE TABLE bronze.pib; -- Remove todas as linhas da tabela antes de adicionar as linhas
@@ -61,4 +62,31 @@ BEGIN
 		CODEPAGE = '65001' 
 	);
 	-- SELECT * FROM bronze.dados_brasil
+	
+	TRUNCATE TABLE bronze.inpc
+	BULK INSERT bronze.inpc
+	FROM 'C:\Users\leona\Analise-Impacto-na-Economia-1\Data\INPC_2004_2024.csv'
+	WITH(
+		FIRSTROW = 2,
+		FIELDTERMINATOR = ',',
+		ROWTERMINATOR = '0x0a',
+		TABLOCK,
+		CODEPAGE = '65001'
+	);
+
+	TRUNCATE TABLE bronze.world_data
+	BULK INSERT bronze.world_data
+	FROM 'C:\Users\leona\Analise-Impacto-na-Economia-1\Data\world_bank_data_2025.csv'
+	WITH(
+		FIRSTROW = 2,
+		FIELDTERMINATOR = ',',
+		ROWTERMINATOR = '0x0a',
+		TABLOCK,
+		CODEPAGE = '65001'
+	);
+	ALTER TABLE bronze.taxa_cambio
+	DROP COLUMN raw_date, ano_mes_dia;
+
+	ALTER TABLE bronze.world_data
+	ADD wdID INT IDENTITY(1,1) PRIMARY KEY NOT NULL
 END;

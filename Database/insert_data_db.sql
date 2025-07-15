@@ -84,9 +84,22 @@ BEGIN
 		TABLOCK,
 		CODEPAGE = '65001'
 	);
+
+	TRUNCATE TABLE bronze.taxa_desemprego
+	BULK INSERT bronze.taxa_desemprego
+	FROM 'C:\Users\leona\Analise-Impacto-na-Economia-1\Data\Taxa_desemprego.csv'
+	WITH(
+		FIRSTROW = 2,
+		FIELDTERMINATOR = ',',
+		ROWTERMINATOR = '0x0a',
+		TABLOCK,
+		CODEPAGE = '65001'
+		);
+
 	ALTER TABLE bronze.taxa_cambio
 	DROP COLUMN raw_date, ano_mes_dia;
 
 	ALTER TABLE bronze.world_data
 	ADD wdID INT IDENTITY(1,1) PRIMARY KEY NOT NULL
+
 END;

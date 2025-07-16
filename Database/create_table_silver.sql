@@ -16,7 +16,7 @@ CREATE TABLE silver.ano(
 	ano INT NOT NULL
 );
 
--- Criação da tabela silver.infos_brasil
+-- Criação da tabela silver.dados_brasil
 IF OBJECT_ID('silver.dados_brasil', 'U') IS NOT NULL
     DROP TABLE silver.dados_brasil
 CREATE TABLE silver.dados_brasil(
@@ -71,25 +71,17 @@ CREATE TABLE silver.taxa_cambio (
 );
 
 -- Criação da tabela silver.dados_brasil
-IF OBJECT_ID('silver.dados_brasil', 'U') IS NOT NULL
+IF OBJECT_ID('silver.infos_brasil', 'U') IS NOT NULL
 BEGIN
-	DROP TABLE silver.dados_brasil;
+	DROP TABLE silver.infos_brasil;
 END
-CREATE TABLE silver.dados_brasil (
-	dados_brasilID INT IDENTITY(1,1) PRIMARY KEY,
-	nome_pais VARCHAR(6) NOT NULL,
-	pais_codigo VARCHAR(3) NOT NULL,
-	tipo_informacao VARCHAR(100) NOT NULL,
-	codigo_de_serie VARCHAR(200) NOT NULL,
-	ano_2015 VARCHAR(200) NOT NULL,
-	ano_2017 VARCHAR(200) NOT NULL,
-	ano_2018 VARCHAR(200) NOT NULL,
-	ano_2019 VARCHAR(200) NOT NULL,
-	ano_2020 VARCHAR(200) NOT NULL,
-	ano_2021 VARCHAR(200) NOT NULL,
-	ano_2022 VARCHAR(200) NOT NULL,
-	ano_2023 VARCHAR(200) NOT NULL,
-	ano_2024 VARCHAR(200) NOT NULL,
+CREATE TABLE silver.infos_brasil (
+	infos_brasilID INT NOT NULL,
+	ano_infos_brasil INT NOT NULL,
+	DIVIDA_LIQUIDA_BRASIL DECIMAL(10,3) NOT NULL,
+	DIVIDA_BRUTA_BRASIL DECIMAL(10,3) NOT NULL,
+	DESPESA_BRASIL DECIMAL(10,3) NOT NULL,
+	INFLACAO DECIMAL(10,2) NOT NULL,
 );
 
 -- Criação da tabela silver.inpc

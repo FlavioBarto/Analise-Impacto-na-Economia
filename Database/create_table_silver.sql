@@ -10,20 +10,24 @@ CREATE TABLE silver.ibc_br (
 	ibc_br DECIMAL(10,6) NOT NULL
 );
 
--- Criação da tabela silver.infos_brasil
-IF OBJECT_ID('silver.infos_brasil', 'U') IS NOT NULL
-BEGIN
-	DROP TABLE silver.infos_brasil;
-END
-CREATE TABLE silver.infos_brasil (
-	infos_brasilID INT NOT NULL,
-	ano_infos_brasil INT NOT NULL,
-	DIVIDA_LIQUIDA_BRASIL DECIMAL(10,3) NOT NULL,
-	DIVIDA_BRUTA_BRASIL DECIMAL(10,3) NOT NULL,
-	DESPESA_BRASIL DECIMAL(10,3) NOT NULL,
-	INFLACAO DECIMAL(10,2) NOT NULL,
-);
 
+-- Criação da tabela silver.infos_brasil
+IF OBJECT_ID('silver.dados_brasil', 'U') IS NOT NULL
+    DROP TABLE silver.dados_brasil
+CREATE TABLE silver.dados_brasil(
+    dados_brasilID int identity(1,1) primary key not null,
+    codigo_pais nvarchar(20) not null,
+    tipo_informacao nvarchar(100) not null,
+    codigo_de_serie nvarchar(100) not null,
+    ano_2017 decimal(30,20) not null,
+    ano_2018 decimal(30,20) not null,
+    ano_2019 decimal(30,20) not null,
+    ano_2020 decimal(30,20) not null,
+    ano_2021 decimal(30,20) not null,
+    ano_2022 decimal(30,20) not null,
+    ano_2023 decimal(30,20) not null,
+    ano_2024 decimal(30,20) not null,
+    nome_pais nvarchar(20) not null);
 -- Criação da tabela silver.pib
 IF OBJECT_ID('silver.pib', 'U') IS NOT NULL
 BEGIN
@@ -60,7 +64,6 @@ CREATE TABLE silver.taxa_cambio (
 	ano_taxa_cambio INT NOT NULL,
 	valor_taxa_cambio DECIMAL(18,6) NOT NULL,
 );
-
 
 -- Criação da tabela silver.dados_brasil
 IF OBJECT_ID('silver.dados_brasil', 'U') IS NOT NULL
@@ -132,17 +135,14 @@ CREATE TABLE silver.world_data (
 	public_debt DECIMAL(38,20),
 );
 
--- Criação da tabela silver.taxa_desemprego
-IF OBJECT_ID('silver.taxa_desemprego', 'U') IS NOT NULL
-BEGIN
-	DROP TABLE silver.taxa_desemprego;
-END
-CREATE TABLE silver.taxa_desemprego (
-	taxa_desempregoID INT IDENTITY(1,1) PRIMARY KEY,
-	taxa_desemprego_ano INT NOT NULL,
-	taxa_desemprego DECIMAL(4,2),
-);
 
+--Criando tabela silver.taxa_desemprego
+IF OBJECT_ID('silver.taxa_desemprego', 'U') IS NOT NULL
+    DROP TABLE silver.taxa_desemprego
+CREATE TABLE silver.taxa_desemprego(
+    taxa_desempregoID int primary key not null,
+    ano_id int not null,
+    taxa_desemprego decimal(5,2) not null);
 
 --Criando tabela silver.mes
 IF OBJECT_ID('silver.mes', 'U') IS NOT NULL

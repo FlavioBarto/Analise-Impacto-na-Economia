@@ -1,3 +1,8 @@
+-- Inserção na tabela ano
+TRUNCATE TABLE silver.ano
+INSERT INTO silver.ano (ano)
+SELECT ano_inpc FROM bronze.inpc;
+
 --Inserindo dados na tabela silver.mes
 INSERT INTO silver.mes(mes, nome)
 SELECT DISTINCT 
@@ -56,6 +61,7 @@ JOIN silver.ano sa ON bi.ano = sa.ano
 JOIN silver.mes sm ON bi.mes = sm.mes
 WHERE sa.ano < 2025;
 
+
 -- Inserção na tabela taxa_cambio
 TRUNCATE TABLE silver.taxa_cambio
 INSERT INTO silver.taxa_cambio(taxa_cambioID, codigo, dia_taxa_cambio, mes_taxa_cambio, ano_taxa_cambio, valor_taxa_cambio)
@@ -111,8 +117,4 @@ PIB_PER_CAPITA_REAL, POPULACAO_ESTIMADA)
 SELECT bp.pibID, sa.ano_id, bp.PIB_VARIACAO, bp.VALOR_PIB_REAIS, bp.VALOR_PIB_DOLAR, bp.TAXA_CAMBIO_PIB, bp.PIB_PER_CAPITA_REAL, bp.POPULACAO_ESTIMADA
 FROM bronze.pib bp
 JOIN silver.ano sa ON sa.ano = bp.ANO_PIB;
-
--- Inserção na tabela ano
-INSERT INTO silver.ano (ano)
-SELECT taxa_desemprego_ano FROM bronze.taxa_desemprego;
 

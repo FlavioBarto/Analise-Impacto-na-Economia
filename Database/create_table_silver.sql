@@ -142,5 +142,5 @@ CREATE TABLE silver.pib (
 IF OBJECT_ID('silver.ano', 'U') IS NOT NULL
 	DROP TABLE silver.ano
 CREATE TABLE silver.ano(
-	ano_id int primary key not null,
+	ano_id int identity(1,1) primary key not null,
 	ano int not null);

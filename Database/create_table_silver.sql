@@ -143,3 +143,11 @@ CREATE TABLE silver.taxa_desemprego (
 	taxa_desemprego DECIMAL(4,2),
 );
 
+
+--Criando tabela silver.mes
+IF OBJECT_ID('silver.mes', 'U') IS NOT NULL
+	DROP TABLE silver.mes
+CREATE TABLE silver.mes(
+	mes_id int identity(1,1) primary key not null,
+	mes int not null,
+	nome nvarchar(20) not null);

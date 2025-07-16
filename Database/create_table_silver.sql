@@ -65,7 +65,7 @@ CREATE TABLE silver.taxa_cambio (
 	valor_taxa_cambio DECIMAL(18,6) NOT NULL,
 );
 
--- Criação da tabela silver.dados_brasil
+-- Criação da tabela silver.infos_brasil
 IF OBJECT_ID('silver.infos_brasil', 'U') IS NOT NULL
 BEGIN
 	DROP TABLE silver.infos_brasil;

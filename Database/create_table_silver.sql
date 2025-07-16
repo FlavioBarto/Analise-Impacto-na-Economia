@@ -10,6 +10,11 @@ CREATE TABLE silver.ibc_br (
 	ibc_br DECIMAL(10,6) NOT NULL
 );
 
+-- Criação da tabela de ano
+CREATE TABLE silver.ano(
+	ano_id INT IDENTITY(1,1) PRIMARY KEY,
+	ano INT NOT NULL
+);
 
 -- Criação da tabela silver.infos_brasil
 IF OBJECT_ID('silver.dados_brasil', 'U') IS NOT NULL

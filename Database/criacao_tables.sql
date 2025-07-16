@@ -72,8 +72,6 @@ CREATE TABLE bronze.dados_brasil (
 	ano_2024 VARCHAR(200) NOT NULL
 );
 
-
--- Criação da tabela INPC
 IF OBJECT_ID('bronze.inpc', 'U') IS NOT NULL
 	DROP TABLE bronze.inpc
 CREATE TABLE bronze.inpc(
@@ -116,4 +114,13 @@ CREATE TABLE bronze.world_data(
 	gross_national_income DECIMAL(38,20),
 	public_debt DECIMAL(38,20)
 );
+
+IF OBJECT_ID('bronze.taxa_desemprego', 'U') IS NOT NULL
+	DROP TABLE bronze.taxa_desemprego
+CREATE TABLE bronze.taxa_desemprego(
+	taxa_desempregoID INT IDENTITY(1,1) PRIMARY KEY,
+	taxa_desemprego_ano INT NOT NULL,
+	taxa_desemprego DECIMAL(4,2)
+);
+
 

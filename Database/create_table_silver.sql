@@ -1,35 +1,13 @@
--- Criação da tabela silver.ano
-IF OBJECT_ID('silver.ano', 'U') IS NULL
-BEGIN
-CREATE TABLE silver.ano (
-	anoID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-	ano INT NOT NULL
-);
-	INSERT INTO silver.ano(ano) VALUES (2017),(2018),(2019),(2020), (2021), (2022), (2023), (2024), (2025);
-END;
-
-IF OBJECT_ID('silver.mes', 'U') IS NULL
-BEGIN
-CREATE TABLE silver.mes (
-	mesID INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-	mes VARCHAR(4) NOT NULL
-);
-INSERT INTO silver.mes (mes) VALUES 
-	('JAN'),('FEV'),('MAR'),
-	('ABR'),('MAI'),('JUN'),
-	('JUL'), ('AGO'), ('SETE'), 
-	('OUTU'), ('NOV'), ('DEZ');
-END;
 -- Criação da tabela silver.ibc_br
 IF OBJECT_ID('silver.ibc_br', 'U') IS NOT NULL
 BEGIN
 	DROP TABLE silver.ibc_br;
 END
 CREATE TABLE silver.ibc_br (
-	ibc_brID INT IDENTITY(1,1) PRIMARY KEY,
+	ibc_brID INT NOT NULL,
 	ano_ibcbr INT NOT NULL,
 	mes_ibcbr INT NOT NULL,
-	ibc_br DECIMAL(10,6) NOT NULL,
+	ibc_br DECIMAL(10,6) NOT NULL
 );
 
 -- Criação da tabela silver.infos_brasil
@@ -38,7 +16,7 @@ BEGIN
 	DROP TABLE silver.infos_brasil;
 END
 CREATE TABLE silver.infos_brasil (
-	infos_brasilID INT IDENTITY(1,1) PRIMARY KEY,
+	infos_brasilID INT NOT NULL,
 	ano_infos_brasil INT NOT NULL,
 	DIVIDA_LIQUIDA_BRASIL DECIMAL(10,3) NOT NULL,
 	DIVIDA_BRUTA_BRASIL DECIMAL(10,3) NOT NULL,
@@ -52,7 +30,7 @@ BEGIN
 	DROP TABLE silver.pib;
 END
 CREATE TABLE silver.pib (
-	pibID INT IDENTITY(1,1) PRIMARY KEY,
+	pibID INT PRIMARY KEY,
 	ANO_PIB INT NOT NULL,
 	PIB_VARIACAO DECIMAL(18,6) NOT NULL,
 	VALOR_PIB_REAIS NVARCHAR(20) NOT NULL,
@@ -62,21 +40,27 @@ CREATE TABLE silver.pib (
 	POPULACAO_ESTIMADA NVARCHAR(20) NOT NULL,
 );
 
+INSERT INTO silver.pib (pibID, ANO_PIB, 
+PIB_VARIACAO, VALOR_PIB_REAIS, 
+VALOR_PIB_DOLAR, TAXA_CAMBIO_PIB, 
+PIB_PER_CAPITA_REAL, POPULACAO_ESTIMADA)
+SELECT pibID, ANO_PIB, PIB_VARIACAO,VALOR_PIB_REAIS, VALOR_PIB_DOLAR, TAXA_CAMBIO_PIB, PIB_PER_CAPITA_REAL, POPULACAO_ESTIMADA
+FROM bronze.pib
+
 -- Criação da tabela silver.taxa_cambio
 IF OBJECT_ID('silver.taxa_cambio', 'U') IS NOT NULL
 BEGIN
 	DROP TABLE silver.taxa_cambio;
 END
 CREATE TABLE silver.taxa_cambio (
-	taxa_cambioID INT IDENTITY(1,1) PRIMARY KEY,
-	ano_mes_dia DATE NOT NULL,
+	taxa_cambioID INT PRIMARY KEY,
 	codigo VARCHAR(15) NOT NULL,
-	raw_date VARCHAR(25) NOT NULL,
 	dia_taxa_cambio INT NOT NULL,
 	mes_taxa_cambio INT NOT NULL,
 	ano_taxa_cambio INT NOT NULL,
 	valor_taxa_cambio DECIMAL(18,6) NOT NULL,
 );
+
 
 -- Criação da tabela silver.dados_brasil
 IF OBJECT_ID('silver.dados_brasil', 'U') IS NOT NULL
@@ -106,7 +90,7 @@ BEGIN
 	DROP TABLE silver.inpc;
 END
 CREATE TABLE silver.inpc (
-	inpcID INT IDENTITY(1,1) PRIMARY KEY,
+	inpcID INT PRIMARY KEY,
 	ano_inpc INT NOT NULL,
 	JAN DECIMAL(3,2) NOT NULL,
 	FEV DECIMAL(3,2) NOT NULL,
@@ -129,6 +113,7 @@ BEGIN
 	DROP TABLE silver.world_data;
 END
 CREATE TABLE silver.world_data (
+	wdID INT IDENTITY(1,1) PRIMARY KEY,
 	country_name VARCHAR(50) NOT NULL,
 	country_id VARCHAR(3) NOT NULL,
 	year_wd INT NOT NULL,
@@ -158,3 +143,11 @@ CREATE TABLE silver.taxa_desemprego (
 	taxa_desemprego DECIMAL(4,2),
 );
 
+
+--Criando tabela silver.mes
+IF OBJECT_ID('silver.mes', 'U') IS NOT NULL
+	DROP TABLE silver.mes
+CREATE TABLE silver.mes(
+	mes_id int identity(1,1) primary key not null,
+	mes int not null,
+	nome nvarchar(20) not null);

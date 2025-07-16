@@ -96,10 +96,4 @@ BEGIN
 		CODEPAGE = '65001'
 		);
 
-	ALTER TABLE bronze.taxa_cambio
-	DROP COLUMN raw_date, ano_mes_dia;
-
-	ALTER TABLE bronze.world_data
-	ADD wdID INT IDENTITY(1,1) PRIMARY KEY NOT NULL
-
 END;

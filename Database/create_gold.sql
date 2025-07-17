@@ -185,7 +185,7 @@ SELECT
     wd.wdID AS 'ID',
     wd.country_name AS 'nome_do_pais',
     wd.country_id AS 'cod_pais',
-    dtdt.id AS 'ano_id',
+    gdt.id AS 'ano_id',
     wd.AnoCalculado AS ano, 
     wd.inflation_cpi AS 'inflacao_cpi',
     wd.gdp_wd AS 'pib',

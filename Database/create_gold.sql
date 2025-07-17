@@ -50,7 +50,7 @@ select * from gold.temp_dim_tempo
 
 /*
 ===================================================================
-      CRIANDO DIMENSÃO DE FATORES ECONÔMICOS DO BRASIL
+      CRIANDO FATO DE FATORES ECONÔMICOS DO BRASIL
 ===================================================================
 */
 CREATE VIEW gold.fact_fatores_economicos_brasil AS
@@ -144,7 +144,7 @@ ON
 select * from gold.fact_fatores_economicos_internacionais
 /* 
 ===================================================================
-      CRIANDO DIMENSÃO DE FATORES ECONÔMICOS INTERNACIONAIS
+      CRIANDO FATO DE FATORES ECONÔMICOS INTERNACIONAIS
 ===================================================================
 */
 CREATE VIEW gold.fact_fatores_economicos_internacionais AS
@@ -207,4 +207,38 @@ JOIN
 ON
     CAST(wd.AnoCalculado as nvarchar) = gdt.nome;
 
+
+/* 
+===========================================
+        CRIANDO FATO TAXA CAMBIO
+===========================================
+*/
+CREATE VIEW gold.fact_taxa_cambio AS
+WITH TaxaCambioTransformada AS (
+    SELECT 
+        st.dia_taxa_cambio, 
+        st.mes_taxa_cambio,
+        st.ano_taxa_cambio AS ano_id,
+        CASE 
+            WHEN st.ano_taxa_cambio = 1 THEN 2017
+            WHEN st.ano_taxa_cambio = 2 THEN 2018
+            WHEN st.ano_taxa_cambio = 3 THEN 2019
+            WHEN st.ano_taxa_cambio = 4 THEN 2020
+            WHEN st.ano_taxa_cambio = 5 THEN 2021
+            WHEN st.ano_taxa_cambio = 6 THEN 2022
+            WHEN st.ano_taxa_cambio = 7 THEN 2023
+        END AS ano,
+        st.valor_taxa_cambio
+    FROM silver.taxa_cambio st
+)
+SELECT 
+    tct.ano_id, 
+    tct.dia_taxa_cambio, 
+    tct.mes_taxa_cambio, 
+    tct.valor_taxa_cambio
+FROM TaxaCambioTransformada tct
+JOIN gold.dim_tempo gdt_ano ON TRY_CAST(tct.ano AS nvarchar) = gdt_ano.nome
+JOIN silver.mes sm ON tct.mes_taxa_cambio = sm.mes;
+
+select * from gold.fact_taxa_cambio
 

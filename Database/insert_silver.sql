@@ -118,3 +118,51 @@ SELECT bp.pibID, sa.ano_id, bp.PIB_VARIACAO, bp.VALOR_PIB_REAIS, bp.VALOR_PIB_DO
 FROM bronze.pib bp
 JOIN silver.ano sa ON sa.ano = bp.ANO_PIB;
 
+
+-- Adicionando constraints de chave estrangeira
+-- silver.taxa_desemprego.ano_id → silver.ano.ano_id
+ALTER TABLE silver.taxa_desemprego
+ADD CONSTRAINT FK_taxa_desemprego_ano
+FOREIGN KEY (ano_id) REFERENCES silver.ano(ano_id);
+
+-- silver.ibc_br.ano_ibcbr → silver.ano.ano_id
+ALTER TABLE silver.ibc_br
+ADD CONSTRAINT FK_ibcbr_ano
+FOREIGN KEY (ano_ibcbr) REFERENCES silver.ano(ano_id);
+
+-- silver.ibc_br.mes_ibcbr → silver.mes.mes_id
+ALTER TABLE silver.ibc_br
+ADD CONSTRAINT FK_ibcbr_mes
+FOREIGN KEY (mes_ibcbr) REFERENCES silver.mes(mes_id);
+
+-- silver.taxa_cambio.ano_taxa_cambio → silver.ano.ano_id
+ALTER TABLE silver.taxa_cambio
+ADD CONSTRAINT FK_taxacambio_ano
+FOREIGN KEY (ano_taxa_cambio) REFERENCES silver.ano(ano_id);
+
+-- silver.taxa_cambio.mes_taxa_cambio → silver.mes.mes_id
+ALTER TABLE silver.taxa_cambio
+ADD CONSTRAINT FK_taxacambio_mes
+FOREIGN KEY (mes_taxa_cambio) REFERENCES silver.mes(mes_id);
+
+-- silver.world_data.year_wd → silver.ano.ano_id
+ALTER TABLE silver.world_data
+ADD CONSTRAINT FK_worlddata_ano
+FOREIGN KEY (year_wd) REFERENCES silver.ano(ano_id);
+
+-- silver.infos_brasil.ano_infos_brasil → silver.ano.ano_id
+ALTER TABLE silver.infos_brasil
+ADD CONSTRAINT FK_infosbrasil_ano
+FOREIGN KEY (ano_infos_brasil) REFERENCES silver.ano(ano_id);
+
+-- silver.inpc.ano_inpc → silver.ano.ano_id
+ALTER TABLE silver.inpc
+ADD CONSTRAINT FK_inpc_ano
+FOREIGN KEY (ano_inpc) REFERENCES silver.ano(ano_id);
+
+-- silver.pib.ANO_PIB → silver.ano.ano_id
+ALTER TABLE silver.pib
+ADD CONSTRAINT FK_pib_ano
+FOREIGN KEY (ANO_PIB) REFERENCES silver.ano(ano_id);
+
+

@@ -21,9 +21,6 @@
     - Realizar a curadoria dos dados, sempre priorizando fontes seguras brasileiras, como o IBGE. 
         -> Ex: tinhamos mais de 1 PIB dentre os datasets, o PIB priorizado foi o do IBGE.
     
- NOMENCLATURA:
-    - A nomenclatura das views seguem o seguinte padrão:
-        -> Caso seja uma dimensão: dim_fatores
 */
 
 /* 
@@ -48,9 +45,10 @@ SELECT nome from silver.mes
 CREATE VIEW gold.dim_tempo AS
 select * from gold.temp_dim_tempo
 
+
 /*
 ===================================================================
-      CRIANDO FATO DE FATORES ECONÔMICOS DO BRASIL
+      CRIANDO DIMENSÃO DE FATORES ECONÔMICOS DO BRASIL
 ===================================================================
 */
 CREATE VIEW gold.fact_fatores_economicos_brasil AS
@@ -85,7 +83,6 @@ WITH FatoresBrasilCalculados AS (
         swd.current_account_balance,
         swd.government_expense,
         swd.government_revenue,
-        swd.tax_revenue,
         swd.gross_national_income,
         swd.public_debt,
         sib.ano_infos_brasil,
@@ -116,35 +113,32 @@ SELECT
     fbc.PIB_VARIACAO AS variacao_pib,
     fbc.VALOR_PIB_REAIS AS valor_pib_reais,
     fbc.VALOR_PIB_DOLAR AS valor_pib_dolares,
-    fbc.TAXA_CAMBIO_PIB AS taxa_cambio,
+    TRY_CAST(fbc.TAXA_CAMBIO_PIB as float)/100 AS taxa_cambio, --Divido por 100(%)
     fbc.PIB_PER_CAPITA_REAL AS pib_percapita_real,
     fbc.POPULACAO_ESTIMADA AS populacao,
-    fbc.DIVIDA_LIQUIDA_BRASIL AS divida_liquida,
-    fbc.DIVIDA_BRUTA_BRASIL AS divida_bruta,
-    fbc.DESPESA_BRASIL AS despesa_brasil,
-    fbc.INFLACAO AS inflacao,
-    fbc.taxa_desemprego,
-    fbc.inflation_cpi AS inflacao_cpi,
-    fbc.interest_rate AS taxa_de_juros,
-    fbc.inflation_gdp AS inflacao_gdp,
-    fbc.GDP_growth AS crescimento_pib,
-    fbc.current_account_balance AS balanca_pagamentos,
-    fbc.government_expense AS despesas_governo,
-    fbc.government_revenue AS receita_governo,
-    fbc.tax_revenue AS receita_tributária,
-    fbc.gross_national_income AS renda_nacional_bruta,
-    fbc.public_debt AS divida_publica
+    fbc.DIVIDA_LIQUIDA_BRASIL/100 AS divida_liquida,
+    fbc.DIVIDA_BRUTA_BRASIL/100 AS divida_bruta, --Divido por 100(%)
+    fbc.DESPESA_BRASIL/100 AS despesa_brasil, --Divido por 100(%)
+    fbc.INFLACAO/100 AS inflacao, --Divido por 100(%)
+    fbc.taxa_desemprego/100 as taxa_desemprego, --Divido por 100(%)
+    fbc.inflation_cpi/100 AS inflacao_cpi, --Divido por 100(%)
+    fbc.inflation_gdp/100 AS inflacao_gdp, --Divido por 100(%)
+    fbc.GDP_growth/100 AS crescimento_pib, --Divido por 100(%)
+    fbc.current_account_balance/100 AS balanca_pagamentos, --Divido por 100(%)
+    fbc.government_expense/100 AS despesas_governo, --Divido por 100(%)
+    TRY_CAST(fbc.government_revenue as float)/100 AS receita_governo,  --Divido por 100(%)
+    fbc.gross_national_income AS renda_nacional_bruta
 FROM
     FatoresBrasilCalculados AS fbc -- Referenciando a CTE
 JOIN
     gold.dim_tempo AS gdt
 ON
-    fbc.AnoCalculado = TRY_CAST(gdt.nome AS INT); -- Junção segura com TRY_CAST
+    fbc.AnoCalculado = TRY_CAST(gdt.nome AS INT); -- Junção segura com TRY_CAST | 28.5828852342878
 
-select * from gold.fact_fatores_economicos_internacionais
+
 /* 
 ===================================================================
-      CRIANDO FATO DE FATORES ECONÔMICOS INTERNACIONAIS
+      CRIANDO DIMENSÃO DE FATORES ECONÔMICOS INTERNACIONAIS
 ===================================================================
 */
 CREATE VIEW gold.fact_fatores_economicos_internacionais AS
@@ -210,7 +204,7 @@ ON
 
 /* 
 ===========================================
-        CRIANDO FATO TAXA CAMBIO
+        CRIANDO DIMENSÃO TAXA CAMBIO
 ===========================================
 */
 CREATE VIEW gold.fact_taxa_cambio AS
@@ -240,5 +234,4 @@ FROM TaxaCambioTransformada tct
 JOIN gold.dim_tempo gdt_ano ON TRY_CAST(tct.ano AS nvarchar) = gdt_ano.nome
 JOIN silver.mes sm ON tct.mes_taxa_cambio = sm.mes;
 
-select * from gold.fact_taxa_cambio
 

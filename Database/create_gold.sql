@@ -141,6 +141,7 @@ ON
       CRIANDO DIMENSÃO DE FATORES ECONÔMICOS INTERNACIONAIS
 ===================================================================
 */
+
 CREATE VIEW gold.fact_fatores_economicos_internacionais AS
 WITH WorldDataComAno AS (
     SELECT
@@ -161,15 +162,13 @@ WITH WorldDataComAno AS (
         gdp_wd,
         gdp_percapita,
         unemployment_rate,
-        interest_rate,
         inflation_gdp,
         GDP_growth,
         current_account_balance,
         government_expense,
         government_revenue,
         tax_revenue,
-        gross_national_income,
-        public_debt
+        gross_national_income
     FROM
         silver.world_data
     WHERE
@@ -181,25 +180,23 @@ SELECT
     wd.country_id AS 'cod_pais',
     gdt.id AS 'ano_id',
     wd.AnoCalculado AS ano, 
-    wd.inflation_cpi AS 'inflacao_cpi',
+    TRY_CAST(wd.inflation_cpi as float)/100 AS 'inflacao_cpi',
     wd.gdp_wd AS 'pib',
     wd.gdp_percapita AS 'pib_percapita',
-    wd.unemployment_rate AS 'taxa_desemprego',
-    wd.interest_rate AS 'taxa_de_juros',
-    wd.inflation_gdp AS 'inflacao_pib',
-    wd.GDP_growth AS 'crescimento_pib',
-    wd.current_account_balance AS 'balanca_pagamentos',
-    wd.government_expense AS 'dispesas_governo',
-    wd.government_revenue AS 'receita_governo',
-    wd.tax_revenue AS 'receita_tributária',
-    wd.gross_national_income AS 'renda_nacional_bruta',
-    wd.public_debt AS 'divida_publica'
+    TRY_CAST(wd.unemployment_rate as float)/100 AS 'taxa_desemprego',
+    TRY_CAST(wd.inflation_gdp as float)/100 AS 'inflacao_pib',
+    TRY_CAST(wd.GDP_growth as float)/100 AS 'crescimento_pib',
+    TRY_CAST(wd.current_account_balance as float)/100 AS 'balanca_pagamentos',
+    TRY_CAST(wd.government_expense as float)/100 AS 'dispesas_governo',
+    TRY_CAST(wd.government_revenue as float)/100 AS 'receita_governo',
+    TRY_CAST(wd.tax_revenue as float)/100 AS 'receita_tributária',
+    wd.gross_national_income AS 'renda_nacional_bruta'
 FROM
     WorldDataComAno AS wd 
 JOIN
     gold.dim_tempo AS gdt
 ON
-    CAST(wd.AnoCalculado as nvarchar) = gdt.nome;
+    CAST(wd.AnoCalculado as nvarchar) = gdt.nome; --'18.5291939067985'
 
 
 /* 

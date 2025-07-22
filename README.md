@@ -49,11 +49,11 @@ Este projeto não possui uma licença definida.
 ## 👥 Autores
 Este projeto foi desenvolvido por:
 
-**Gustavo Toyoshi Hatanaka - LinkedIn**
+**Gustavo Toyoshi Hatanaka - [LinkedIn](https://www.linkedin.com/in/gustavo-toyoshi-hatanaka-624265289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)**
 
-**Leonardo Novi Castro dos Santos - LinkedIn**
+**Leonardo Novi Castro dos Santos - [LinkedIn](https://www.linkedin.com/in/fl%C3%A1vio-gabriel-barto-machado-b4279b236?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)**
 
-**Flávio Gabriel Barto Machado - LinkedIn**
+**Flávio Gabriel Barto Machado - [LinkedIn](https://www.linkedin.com/in/leonardo-novi?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)**
 
 ## 🎯 Status do Projeto
 **Concluído**

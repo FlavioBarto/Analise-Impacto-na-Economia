@@ -1,3 +1,4 @@
+
 /* 
  ===============================
       CRIANDO CAMADA GOLD
@@ -29,21 +30,26 @@
 ===========================================
 */
 
-IF OBJECT_ID('gold.temp_dim_tempo') IS NOT NULL
-    DROP TABLE gold.temp_dim_tempo
-CREATE TABLE gold.temp_dim_tempo(
-    id int identity(1,1) primary key not null, 
+IF OBJECT_ID('gold.temp_dim_ano') IS NOT NULL
+    DROP TABLE gold.dim_ano
+CREATE TABLE gold.dim_ano(
+    ano_id int identity(1,1) primary key not null, 
     nome nvarchar(20) not null);
 
---Tabela temporária para armazenar os valores e resetar ID's
-INSERT INTO gold.temp_dim_tempo
-SELECT CAST(ano as nvarchar) as 'Nome' FROM silver.ano
-UNION
+IF OBJECT_ID('gold.temp_dim_mes') IS NOT NULL
+    DROP TABLE gold.dim_mes
+CREATE TABLE gold.dim_mes(
+    mes_id int identity(1,1) primary key not null, 
+    nome nvarchar(20) not null);
+
+CREATE VIEW gold.dim_ano
+SELECT ano FROM silver.ano
+
+CREATE VIEW gold.dim_mes
 SELECT nome from silver.mes
 
 
-CREATE VIEW gold.dim_tempo AS
-select * from gold.temp_dim_tempo
+select * from gold.dim_ano
 
 
 /*
@@ -108,7 +114,7 @@ WITH FatoresBrasilCalculados AS (
 SELECT
     fbc.pibID AS ID,
     fbc.ANO_PIB AS ano_id_origem, -- Mantendo o ID original do PIB se precisar
-    gdt.id AS ano_id_dimensao, -- O ID da dimensão de tempo
+    gda.ano_id AS ano_id, -- O ID da dimensão de tempo
     fbc.AnoCalculado AS Ano, -- O ano calculado (2018, 2019, etc.)
     fbc.PIB_VARIACAO AS variacao_pib,
     fbc.VALOR_PIB_REAIS AS valor_pib_reais,
@@ -131,9 +137,9 @@ SELECT
 FROM
     FatoresBrasilCalculados AS fbc -- Referenciando a CTE
 JOIN
-    gold.dim_tempo AS gdt
+    gold.dim_ano AS gda
 ON
-    fbc.AnoCalculado = TRY_CAST(gdt.nome AS INT); -- Junção segura com TRY_CAST | 28.5828852342878
+    fbc.AnoCalculado = gda.nome; -- Junção segura com TRY_CAST | 28.5828852342878
 
 
 /* 
@@ -178,7 +184,7 @@ SELECT
     wd.wdID AS 'ID',
     wd.country_name AS 'nome_do_pais',
     wd.country_id AS 'cod_pais',
-    gdt.id AS 'ano_id',
+    gda.ano_id AS 'ano_id',
     wd.AnoCalculado AS ano, 
     TRY_CAST(wd.inflation_cpi as float)/100 AS 'inflacao_cpi',
     wd.gdp_wd AS 'pib',
@@ -194,16 +200,17 @@ SELECT
 FROM
     WorldDataComAno AS wd 
 JOIN
-    gold.dim_tempo AS gdt
+    gold.dim_ano AS gda
 ON
-    CAST(wd.AnoCalculado as nvarchar) = gdt.nome; --'18.5291939067985'
-
+    wd.AnoCalculado = gda.nome;
 
 /* 
 ===========================================
         CRIANDO DIMENSÃO TAXA CAMBIO
 ===========================================
 */
+DROP VIEW gold.fact_taxa_cambio
+
 CREATE VIEW gold.fact_taxa_cambio AS
 WITH TaxaCambioTransformada AS (
     SELECT 
@@ -228,7 +235,6 @@ SELECT
     tct.mes_taxa_cambio, 
     tct.valor_taxa_cambio
 FROM TaxaCambioTransformada tct
-JOIN gold.dim_tempo gdt_ano ON TRY_CAST(tct.ano AS nvarchar) = gdt_ano.nome
-JOIN silver.mes sm ON tct.mes_taxa_cambio = sm.mes;
-
+JOIN gold.dim_ano gdt_ano ON tct.ano = gdt_ano.nome
+JOIN gold.dim_mes sm ON tct.mes_taxa_cambio = sm.mes_id;
 

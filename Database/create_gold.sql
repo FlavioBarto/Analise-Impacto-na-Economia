@@ -30,27 +30,11 @@
 ===========================================
 */
 
-IF OBJECT_ID('gold.temp_dim_ano') IS NOT NULL
-    DROP TABLE gold.dim_ano
-CREATE TABLE gold.dim_ano(
-    ano_id int identity(1,1) primary key not null, 
-    nome nvarchar(20) not null);
-
-IF OBJECT_ID('gold.temp_dim_mes') IS NOT NULL
-    DROP TABLE gold.dim_mes
-CREATE TABLE gold.dim_mes(
-    mes_id int identity(1,1) primary key not null, 
-    nome nvarchar(20) not null);
-
 CREATE VIEW gold.dim_ano
 SELECT ano FROM silver.ano
 
 CREATE VIEW gold.dim_mes
 SELECT nome from silver.mes
-
-
-select * from gold.dim_ano
-
 
 /*
 ===================================================================
@@ -137,10 +121,10 @@ SELECT
 FROM
     FatoresBrasilCalculados AS fbc -- Referenciando a CTE
 JOIN
-    gold.dim_ano AS gda
+    silver.ano AS gda
 ON
-    fbc.AnoCalculado = gda.nome; -- Junção segura com TRY_CAST | 28.5828852342878
-
+    fbc.AnoCalculado = gda.ano; -- Junção segura com TRY_CAST | 28.5828852342878
+    select * from silver.ano
 
 /* 
 ===================================================================
@@ -200,16 +184,15 @@ SELECT
 FROM
     WorldDataComAno AS wd 
 JOIN
-    gold.dim_ano AS gda
+    silver.ano AS gda
 ON
-    wd.AnoCalculado = gda.nome;
+    wd.AnoCalculado = gda.ano;
 
 /* 
 ===========================================
         CRIANDO DIMENSÃO TAXA CAMBIO
 ===========================================
 */
-DROP VIEW gold.fact_taxa_cambio
 
 CREATE VIEW gold.fact_taxa_cambio AS
 WITH TaxaCambioTransformada AS (
@@ -235,6 +218,6 @@ SELECT
     tct.mes_taxa_cambio, 
     tct.valor_taxa_cambio
 FROM TaxaCambioTransformada tct
-JOIN gold.dim_ano gdt_ano ON tct.ano = gdt_ano.nome
-JOIN gold.dim_mes sm ON tct.mes_taxa_cambio = sm.mes_id;
+JOIN silver.ano gdt_ano ON tct.ano = gdt_ano.ano
+JOIN silver.mes sm ON tct.mes_taxa_cambio = sm.mes_id;
 

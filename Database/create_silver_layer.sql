@@ -1,6 +1,6 @@
 
 --Criando tabela silver.mes
-IF OBJECT_ID('silver.mes', 'U') IS NOT NULL
+IF OBJECT_ID('silver.mes', 'U') IS NOT NULL -- Verifica os valores da tabela caso ja exista, a tabela é apagada e recriada
 	DROP TABLE silver.mes
 CREATE TABLE silver.mes(
 	mes_id int identity(1,1) primary key not null,
@@ -8,7 +8,7 @@ CREATE TABLE silver.mes(
 	nome nvarchar(20) not null);
 
 --Criando tabela silver.dados_brasil
-IF OBJECT_ID('silver.dados_brasil', 'U') IS NOT NULL
+IF OBJECT_ID('silver.dados_brasil', 'U') IS NOT NULL  -- Verifica os valores da tabela caso ja exista, a tabela é apagada e recriada
     DROP TABLE silver.dados_brasil
 CREATE TABLE silver.dados_brasil(
     dados_brasilID int identity(1,1) primary key not null,
@@ -26,7 +26,7 @@ CREATE TABLE silver.dados_brasil(
     nome_pais nvarchar(20) not null);
 
 --Criando tabela silver.taxa_desemprego
-IF OBJECT_ID('silver.taxa_desemprego', 'U') IS NOT NULL
+IF OBJECT_ID('silver.taxa_desemprego', 'U') IS NOT NULL -- Verifica os valores da tabela caso ja exista, a tabela é apagada e recriada
     DROP TABLE silver.taxa_desemprego
 CREATE TABLE silver.taxa_desemprego(
     taxa_desempregoID int primary key not null,
@@ -34,7 +34,7 @@ CREATE TABLE silver.taxa_desemprego(
     taxa_desemprego decimal(5,2) not null);
 
 --Criando tabela silver.ibc_br
-IF OBJECT_ID('silver.ibc_br', 'U') IS NOT NULL
+IF OBJECT_ID('silver.ibc_br', 'U') IS NOT NULL -- Verifica os valores da tabela caso ja exista, a tabela é apagada e recriada
 BEGIN
 	DROP TABLE silver.ibc_br;
 END
@@ -46,7 +46,7 @@ CREATE TABLE silver.ibc_br (
 );
 
 -- Criação da tabela silver.taxa_cambio
-IF OBJECT_ID('silver.taxa_cambio', 'U') IS NOT NULL
+IF OBJECT_ID('silver.taxa_cambio', 'U') IS NOT NULL -- Verifica os valores da tabela caso ja exista, a tabela é apagada e recriada
 BEGIN
 	DROP TABLE silver.taxa_cambio;
 END
@@ -61,7 +61,7 @@ CREATE TABLE silver.taxa_cambio (
 
 -------Infos_brasil - world data
 -- Criação da tabela silver.world_data
-IF OBJECT_ID('silver.world_data', 'U') IS NOT NULL
+IF OBJECT_ID('silver.world_data', 'U') IS NOT NULL -- Verifica os valores da tabela caso ja exista, a tabela é apagada e recriada
 BEGIN
 	DROP TABLE silver.world_data;
 END
@@ -86,7 +86,7 @@ CREATE TABLE silver.world_data (
 );
 
 -- Criação da tabela silver.infos_brasil
-IF OBJECT_ID('silver.infos_brasil', 'U') IS NOT NULL
+IF OBJECT_ID('silver.infos_brasil', 'U') IS NOT NULL -- Verifica os valores da tabela caso ja exista, a tabela é apagada e recriada
 BEGIN
 	DROP TABLE silver.infos_brasil;
 END
@@ -100,7 +100,7 @@ CREATE TABLE silver.infos_brasil (
 );
 
 -- Criação da tabela silver.inpc
-IF OBJECT_ID('silver.inpc', 'U') IS NOT NULL
+IF OBJECT_ID('silver.inpc', 'U') IS NOT NULL -- Verifica os valores da tabela caso ja exista, a tabela é apagada e recriada
 BEGIN
 	DROP TABLE silver.inpc;
 END
@@ -123,7 +123,7 @@ CREATE TABLE silver.inpc (
 );
 
 -- Criação da tabela silver.pib
-IF OBJECT_ID('silver.pib', 'U') IS NOT NULL
+IF OBJECT_ID('silver.pib', 'U') IS NOT NULL -- Verifica os valores da tabela caso ja exista, a tabela é apagada e recriada
 BEGIN
 	DROP TABLE silver.pib;
 END
@@ -139,7 +139,7 @@ CREATE TABLE silver.pib (
 );
 
 -- Criação da tabela ano
-IF OBJECT_ID('silver.ano', 'U') IS NOT NULL
+IF OBJECT_ID('silver.ano', 'U') IS NOT NULL -- Verifica os valores da tabela caso ja exista, a tabela é apagada e recriada
 	DROP TABLE silver.ano
 CREATE TABLE silver.ano(
 	ano_id int identity(1,1) primary key not null,

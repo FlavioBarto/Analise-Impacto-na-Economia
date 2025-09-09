@@ -38,7 +38,7 @@ SELECT nome from silver.mes
 
 /*
 ===================================================================
-      CRIANDO DIMENSÃO DE FATORES ECONÔMICOS DO BRASIL
+      CRIANDO TABELA FATO FATORES ECONÔMICOS DO BRASIL
 ===================================================================
 */
 CREATE VIEW gold.fact_fatores_economicos_brasil AS
@@ -128,7 +128,7 @@ ON
 
 /* 
 ===================================================================
-      CRIANDO DIMENSÃO DE FATORES ECONÔMICOS INTERNACIONAIS
+      CRIANDO TABELA FATO DE FATORES ECONÔMICOS INTERNACIONAIS
 ===================================================================
 */
 
@@ -190,7 +190,7 @@ ON
 
 /* 
 ===========================================
-        CRIANDO DIMENSÃO TAXA CAMBIO
+        CRIANDO TABELA FATO DE TAXA CAMBIO
 ===========================================
 */
 
